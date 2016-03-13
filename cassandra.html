@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    RED.nodes.registerType('cassandra',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            contactPoints: {value:""},
+            keyspace: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "dbicon.png",
+        label: function() {
+            return this.name||"cassandra";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cassandra">
+    <div class="form-row">
+        <label for="node-input-contactPoints"><i class="icon-tag"></i> ContactPts</label>
+        <input type="text" id="node-input-contactPoints" placeholder="172.17.0.2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-keyspace"><i class="icon-tag"></i> Keyspace</label>
+        <input type="text" id="node-input-keyspace" placeholder="mykeyspace">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="cassandra">
+    <p>
+	input: msg
+	<ul>msg.cassandra: instance of <b>cassandra-driver</b></ul>
+	<ul>msg.payload.cql: cql to be executed</ul>
+	<ul>msg.payload.params: parameters required to run the cql</ul>
+	output: msg
+	<ul>msg.result: the execution result of cql in JSON string</ul>
+	</p>
+</script>
+
